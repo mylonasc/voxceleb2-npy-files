@@ -6,8 +6,18 @@ The annotations in `/assets/` folder are derived from the original ones (without
 The segments are sorted for each speaker from smallest to largest, as estimated by the maximum timestamp in the annotations. 
 
 Please cite the original VoxCeleb2 paper if you use this dataset.
-## Usage
+## Setup:
 
+Because github does not allow pushing commits larger than 2GB, the `np_files` folder is split into two folders (`_a` and `_b`) which need to be collated upon cloning. 
+
+In Linux or Mac (or in a bash terminal) run the following:
+```bash
+cp voxceleb2-npy-files/voxceleb2/np_files_a/*  voxceleb2-npy-files/voxceleb2/np_files_b/ && mv voxceleb2-npy-files/voxceleb2/np_files_b/ voxceleb2-npy-files/voxceleb2/np_files/
+mv voxceleb2-npy-files/* .
+```
+
+
+## Usage:
 ```python
 
 from voxceleb2_dataset import VoxCeleb2Dataset
@@ -24,5 +34,7 @@ data_inds = dataset.get_speaker_avail_inds(speakers[0])
 all_wavs_for_speaker = [dataset.read_index(i) for i in data_inds]
 
 ```
+
+see the notebook for an example where this dataset is used for training speaker embeddings using the wav2vec 2.0 model.
 
 
