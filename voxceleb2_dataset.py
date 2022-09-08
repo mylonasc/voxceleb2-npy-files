@@ -4,10 +4,12 @@
 #     track of them in a disc cache
 
 import librosa
-import numpy
 import os
 import numpy as np
-import pytube
+try:
+    import pytube
+except:
+    print('pytube not available.')
 import json
 
 #---- utils ----
